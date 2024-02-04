@@ -16,6 +16,7 @@ import reportWebVitals from "./reportWebVitals";
 const lists = JSON.parse(localStorage.getItem("lists")) || [];
 const toDoRoutes = lists.map((list, ind) => (
   <Route
+    exact={true}
     path={"/projects-react/todo/" + list.name}
     element={<ToDoState list={list} ind={ind} />}
     key={ind}
@@ -23,23 +24,20 @@ const toDoRoutes = lists.map((list, ind) => (
 ));
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/projects-react">
       <Routes>
         <Route
-          path="/projects-react"
+          exact={true}
+          path="/"
           element={<Root />}
           errorElement={<ErrorPage />}
         />
-        <Route path="/projects-react/calculator" element={<Calculator />} />
-        <Route path="/projects-react/converter" element={<Converter />} />
-        <Route path="/projects-react/rock-paper-scissors" element={<RPS />} />
-        <Route path="/projects-react/stopwatch" element={<Stopwatch />} />
-        <Route path="/projects-react/tic-tac-toe" element={<TTT />} />
-        <Route
-          exact={true}
-          path="/projects-react/todo"
-          element={<ToDoState list={null} />}
-        />
+        <Route exact={true} path="/calculator" element={<Calculator />} />
+        <Route exact={true} path="/converter" element={<Converter />} />
+        <Route exact={true} path="/rock-paper-scissors" element={<RPS />} />
+        <Route exact={true} path="/stopwatch" element={<Stopwatch />} />
+        <Route exact={true} path="/tic-tac-toe" element={<TTT />} />
+        <Route exact={true} path="/todo" element={<ToDoState list={null} />} />
         {toDoRoutes}
       </Routes>
     </Router>
