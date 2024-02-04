@@ -38,7 +38,7 @@ const ToDoState = (props) => {
           deleteList={deleteList}
           list={props.list}
           ind={props.ind}
-          nav={() => navigate("/projects-react/todo", { replace: true })}
+          nav={() => navigate("/todo", { replace: true })}
         />
       ) : (
         <ToDoMain addList={addList} lists={lists} />

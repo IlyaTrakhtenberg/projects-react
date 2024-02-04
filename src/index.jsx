@@ -17,18 +17,18 @@ const lists = JSON.parse(localStorage.getItem("lists")) || [];
 const toDoRoutes = lists.map((list, ind) => (
   <Route
     exact={true}
-    path={"/projects-react/todo/" + list.name}
+    path={"/todo/" + list.name}
     element={<ToDoState list={list} ind={ind} />}
     key={ind}
   />
 ));
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router basename="/projects-react">
+    <Router basename={"/" + process.env.PUBLIC_URL}>
       <Routes>
         <Route
           exact={true}
-          path="/"
+          path=""
           element={<Root />}
           errorElement={<ErrorPage />}
         />
