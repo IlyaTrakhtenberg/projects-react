@@ -1,0 +1,27 @@
+.pad-container{
+    container-type: inline-size;
+}
+.calc-input{
+    max-width: 100%;
+    word-wrap: break-word;
+}
+@media (max-width:768px){
+    .calc-input{
+        height: 28vh
+    }
+}
+@container (inline-size){
+    .calc-cell{
+        height: 25cqw;
+        font-size: 7cqw;
+        
+    }
+}
+.but{
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    background-color: white;
+}
+
+
