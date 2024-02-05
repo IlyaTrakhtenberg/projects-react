@@ -15,13 +15,12 @@ const AddCurrency = (props) => {
       >
         {props.list.map((currency) => (
           <li key={currency}>
-            <a
+            <div
               className="dropdown-item"
               onClick={() => props.onClick(currency)}
-              href="#"
             >
               {currency}
-            </a>
+            </div>
           </li>
         ))}
       </ul>
