@@ -18,6 +18,7 @@ const AddCurrency = (props) => {
             <a
               className="dropdown-item"
               onClick={() => props.onClick(currency)}
+              href="#"
             >
               {currency}
             </a>

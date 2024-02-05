@@ -20,10 +20,10 @@ const ToDoState = (props) => {
   const addList = (name) => {
     setLists((lists) => [...lists, { name: unique(name), list: [] }]);
   };
-  const updList = (ind, list) => {
+  const saveList = (ind, list) => {
     const copy = [...lists];
     copy[ind] = list;
-    setLists(copy);
+    localStorage.setItem("lists", JSON.stringify(copy));
   };
   const deleteList = (ind) => {
     const copy = [...lists];
@@ -34,7 +34,7 @@ const ToDoState = (props) => {
     <>
       {props.list ? (
         <ToDoList
-          updList={updList}
+          saveList={saveList}
           deleteList={deleteList}
           list={props.list}
           ind={props.ind}

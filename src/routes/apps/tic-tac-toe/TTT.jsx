@@ -1,6 +1,6 @@
 import "./TTT.css";
-import { useState, useEffect, useRef } from "react";
-import { checkResult, drawLine, canvColor } from "./functions.js";
+import { useState, useEffect, useRef, useReducer } from "react";
+import { checkResult, drawLine, reduceColor } from "./functions.js";
 import Cell from "./components/Cell.jsx";
 import Result from "./components/Result.jsx";
 import NewGame from "./components/NewGame.jsx";
@@ -9,10 +9,9 @@ const TTT = () => {
   const canvRef = useRef(null);
   const [canvSize, setCanvSize] = useState(0);
   const [cells, setCells] = useState(Array(9).fill(""));
-  const [turn, setTurn] = useState("X");
+  const [turn, setTurn] = useState(true);
   const [result, setResult] = useState([]);
-  const [color, setColor] = useState("");
-  const newTurn = () => setTurn((turn) => (turn === "X" ? "O" : "X"));
+  const [color, dispatch] = useReducer(reduceColor, "");
   useEffect(() => {
     document.body.style.backgroundColor = "white";
     document.body.style.color = "black";
@@ -25,7 +24,6 @@ const TTT = () => {
     setResult(checkResult(cells));
   }, [cells]);
   useEffect(() => {
-    result && newTurn();
     result &&
       drawLine(
         canvSize,
@@ -33,8 +31,8 @@ const TTT = () => {
         result[1],
         result[2]
       );
-    setColor(canvColor(result ? result[0] || turn : ""));
-  }, [result]);
+    dispatch({ value: result ? result[0] : "" });
+  }, [result, canvSize]);
   useEffect(() => {
     setCanvSize(canvRef.current.parentElement.clientHeight);
   }, [canvSize]);
@@ -51,9 +49,9 @@ const TTT = () => {
                   status={!result}
                   onClick={() => {
                     const cellsCopy = [...cells];
-                    cellsCopy[ind] = turn;
+                    cellsCopy[ind] = turn ? "X" : "O";
                     setCells(cellsCopy);
-                    newTurn();
+                    setTurn((turn) => !turn);
                   }}
                 />
               ))}
@@ -63,11 +61,11 @@ const TTT = () => {
           <div className="col-12 col-md-4">
             {result && (
               <>
-                <Result result={[result[0], turn]} />
+                <Result result={result[0]} />
                 <NewGame
                   onClick={() => {
                     setCells(Array(9).fill(""));
-                    setTurn("X");
+                    setTurn(true);
                     canvRef.current
                       .getContext("2d")
                       .clearRect(0, 0, canvSize, canvSize);

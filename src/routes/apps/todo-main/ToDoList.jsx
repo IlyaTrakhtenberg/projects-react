@@ -3,13 +3,17 @@ import ToDo from "./components/ToDo";
 import AddNew from "./components/AddNew";
 import Rename from "./components/Rename";
 import Delete from "./components/Delete";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 const ToDoList = (props) => {
+  const reduce = (state, action) => {
+    if (action.type === "save") props.saveList(props.ind, action.value);
+    return action.value;
+  };
   const [active, setActive] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [alert, setAlert] = useState(false);
-  const [list, setList] = useState(props.list);
+  const [list, dispatch] = useReducer(reduce, props.list);
   const done = (props) => {
     if (props.every((value) => value)) {
       const newList =
@@ -19,7 +23,7 @@ const ToDoList = (props) => {
               list: [...list.list, { name: name, date: date, done: false }],
             }
           : { name: name, list: list.list };
-      setList(newList);
+      dispatch({ value: newList });
       setActive("");
       setName("");
       setDate("");
@@ -33,15 +37,15 @@ const ToDoList = (props) => {
   const markDone = (ind) => {
     const copy = [...list.list];
     copy[ind].done = !copy[ind].done;
-    setList({ name: list.name, list: copy });
+    dispatch({ value: { name: list.name, list: copy } });
   };
   const remove = (ind) => {
     const copy = [...list.list];
     copy.splice(ind, 1);
-    setList({ name: list.name, list: copy });
+    dispatch({ value: { name: list.name, list: copy } });
   };
   useEffect(() => {
-    props.updList(props.ind, list);
+    dispatch({ type: "save", value: list });
   }, [list]);
   return (
     <>

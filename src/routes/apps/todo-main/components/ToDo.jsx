@@ -9,7 +9,11 @@ const ToDo = (props) => {
             className="btn btn-outline-light px-1"
             onClick={props.markDone}
           >
-            <img src={mark} style={{ height: "1.5rem", visibility: vis }} />
+            <img
+              alt=""
+              src={mark}
+              style={{ height: "1.5rem", visibility: vis }}
+            />
           </button>
         </div>
         <div

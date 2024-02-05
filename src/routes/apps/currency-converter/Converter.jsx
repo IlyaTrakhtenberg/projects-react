@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useFetch from "react-fetch-hook";
 import CurrencyLine from "./components.jsx/CurrencyLine";
 import AddCurrency from "./components.jsx/AddCurrency";
@@ -36,6 +36,15 @@ const Converter = () => {
       <>
         <div className="display-3 text-center my-3">Currency Converter</div>
         <div className="display-6 text-center">Loading...</div>
+      </>
+    );
+  if (error)
+    return (
+      <>
+        <div className="display-3 text-center my-3">Currency Converter</div>
+        <div className="display-6 text-center">
+          Failed to Get Currencies Data
+        </div>
       </>
     );
   return (

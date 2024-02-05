@@ -18,8 +18,9 @@ const RPS = () => {
   };
   useEffect(() => {
     round && updResult(newResult(moves.my, moves.comp));
-    round && updScore(newScore(score, newResult(moves.my, moves.comp)));
-  }, [round]);
+    round &&
+      updScore((score) => newScore(score, newResult(moves.my, moves.comp)));
+  }, [round, moves]);
   const [id, setId] = useState(null);
   const [autoStatus, setAutoStatus] = useState(false);
   const autoPlay = () => {
