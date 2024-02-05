@@ -23,7 +23,7 @@ const ToDoState = (props) => {
   const saveList = (ind, list) => {
     const copy = [...lists];
     copy[ind] = list;
-    localStorage.setItem("lists", JSON.stringify(copy));
+    setLists(copy);
   };
   const deleteList = (ind) => {
     const copy = [...lists];
