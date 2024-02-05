@@ -24,11 +24,11 @@ const toDoRoutes = lists.map((list, ind) => (
 ));
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router basename={"/" + process.env.PUBLIC_URL}>
+    <Router>
       <Routes>
         <Route
           exact={true}
-          path=""
+          path="/"
           element={<Root />}
           errorElement={<ErrorPage />}
         />

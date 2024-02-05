@@ -6,50 +6,35 @@ const Root = () => (
     <div className="container-md text-center mt-3">
       <div className="row gy-3">
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-          <a
-            className="btn btn-outline-light w-100"
-            href="/projects-react/calculator"
-          >
+          <a className="btn btn-outline-light w-100" href="/calculator">
             Calculator
           </a>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-          <a
-            className="btn btn-outline-light w-100"
-            href="/projects-react/converter"
-          >
+          <a className="btn btn-outline-light w-100" href="/converter">
             Currency Converter
           </a>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
           <a
             className="btn btn-outline-light w-100"
-            href="/projects-react/rock-paper-scissors"
+            href="/rock-paper-scissors"
           >
             Rock-Paper-Scissors
           </a>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-          <a
-            className="btn btn-outline-light w-100"
-            href="/projects-react/stopwatch"
-          >
+          <a className="btn btn-outline-light w-100" href="/stopwatch">
             Stopwatch
           </a>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-          <a
-            className="btn btn-outline-light w-100"
-            href="/projects-react/todo"
-          >
+          <a className="btn btn-outline-light w-100" href="/todo">
             ToDo Manager
           </a>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-          <a
-            className="btn btn-outline-light w-100"
-            href="/projects-react/tic-tac-toe"
-          >
+          <a className="btn btn-outline-light w-100" href="/tic-tac-toe">
             Tic-Tac-Toe
           </a>
         </div>

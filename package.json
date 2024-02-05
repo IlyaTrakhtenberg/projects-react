@@ -1,7 +1,7 @@
 {
   "name": "projects-react",
   "version": "0.1.0",
-  "homepage": "https://main--ilyatrakhtenberg.netlify.app/",
+  "homepage": "https://ilyatrakhtenberg.netlify.app/",
   "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
