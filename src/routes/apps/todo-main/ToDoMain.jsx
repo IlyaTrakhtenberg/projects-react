@@ -25,7 +25,7 @@ const ToDoMain = (props) => {
             <ToDoLink
               key={ind}
               name={list.name}
-              href={"/projects-react/todo/" + list.name}
+              href={"/todo/" + list.name}
               done={checkDone(list.list)}
             />
           ))}
